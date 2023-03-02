@@ -21,7 +21,7 @@ The current worflow comprises:
 # Software Tools implemented
 1. Quality control on reads: fastp, longqc
 2. Three genome assemblers: canu, dragonflye, unicycler
-3. Taxonomic classification progams: Kaiju, Kraken, Mash
+3. Taxonomic classification progams: [Kaiju](https://github.com/bioinformatics-centre/kaiju), Kraken, Mash
 4. Genome annotators: bakta, pgap, prokka 
 5. Antimicrobial resistance genes marker: AMRFinderPlus
 6. Average nucleotide identity (ANI): pyANI(pgap)
@@ -29,13 +29,13 @@ The current worflow comprises:
 # Running Flisochar
 Software requirements: You need to have Python, Nextlow, Singularity (apptainer) in your system.
 
-Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also rquir.ed
+Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required.
 
 Note: Before running flisochar, ensure that computing resources are available.
 
-Resource Requirements
+## Resource Requirements
 
-cores: 28, memory: 200gb, time ~ 2:00 hrs for one hybrid (short-read, long-read) bacterial sample 
+Cores: 28, Memory: 200gb, Time ~ 2:00 hrs for one hybrid (short-read, long-read) bacterial sample 
  
 Once the pipeline is available on your system (or on HiPerGator), as a first step, run the command below:
 
@@ -43,7 +43,7 @@ Once the pipeline is available on your system (or on HiPerGator), as a first ste
 module load nextflow apptainer
 ```
 
-Genaral Usage
+## General Usage
 
 ```
 nextflow run flisochar.nf --lreads '*.fastq.gz' --sreads '*_R{1,2}.fastq.gz' --outdir << your output directory>>
