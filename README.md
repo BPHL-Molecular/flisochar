@@ -6,7 +6,7 @@ A Florida BPHL Pipeline to genomically characterize bacterial isolates
 Flisochar owes its inspiration to FLAQ-AMR, the Florida BPHL's standard pipeline for taxonomic characterization and AMR detection.
 
 The Flisochar's overaching goal is to improve the identification of bactorial isolates using hybrid assembly from short and long-read sequencing data. Short-read and long-read sequences can be respectively from the Illumina MiSeq system and the Oxford Nanopore Technologies. 
-The pipeline is built in Nextflow, and Python is used to develop custom scripts, enabling the parsing through of output. It comes with singularity container to simplify installation.
+The pipeline is built in Nextflow, and Python is used to develop custom scripts, enabling the parse of output. It comes with singularity container to simplify installation.
 
 # Workflow
 
@@ -19,7 +19,7 @@ The current worflow comprises:
 6) Genomic Comparison
 
 # Software Tools implemented
-1. Quality control on reads: fastp, longqc
+1. Quality control on reads: fastp, [longqc](https://github.com/yfukasawa/LongQC)
 2. Three genome assemblers: canu, dragonflye, unicycler
 3. Taxonomic classification progams: [Kaiju](https://github.com/bioinformatics-centre/kaiju), Kraken, Mash
 4. Genome annotators: bakta, pgap, prokka 
