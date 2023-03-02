@@ -29,7 +29,7 @@ The current worflow comprises:
 # Running Flisochar
 Software requirements: You need to have Python, Nextlow, Singularity (apptainer) in your system.
 
-Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. While installing, a great idea is creating the environment path variable under your group and unsername (export PGAP_INPUT_DIR =/*/YourGroup/UserName/repos/ncbi/pgap), simply to save everything in your HC cluster.
+Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. While installing, a great idea is creating the environment path variable under your group and username (export PGAP_INPUT_DIR =/*/YourGroup/UserName/repos/ncbi/pgap), simply to save everything in your HC cluster.
 
 ### Note: Before running flisochar, ensure that computing resources are available.
 
