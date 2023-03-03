@@ -28,10 +28,10 @@ def helpMessage() {
     Usage:
 
     The typical command for running the pipeline is as follows:
-    nextflow run flisochar.nf --lreads '*.fastq.gz' --sreads '*_R{1,2}.fastq.gz' --outdir 'output path'
+    nextflow run flisochar.nf --lreads '*.fastq.gz' --sreads '*_{1,2}.fastq.gz' --outdir 'output path'
     Mandatory arguments:
-        --lreads        Path to long-read fastq files
-        --sreads        Path to short-read fastq files
+        --lreads        Path to long-read fastq files i.e '/YourPath/*.fastq.gz'
+        --sreads        Path to short-read fastq files i.e '/YourPath/*_{1,2}.fastq.gz'
         --outdir        Chosen name of the output directory
     Options:
         --asb_tool      One of the following assemblers: [canu, dragonflye, unicycler]
@@ -246,7 +246,7 @@ if (params.asb_tool == 'canu') {
     
     process hb_canu {
         tag {sample_id}
-        publishDir "$params.outdir/assemblies/canu_asbl_out", mode: 'copy''     
+        publishDir "$params.outdir/assemblies/canu_asbl_out", mode: 'copy'     
         input:
         tuple  val(sample_id), file(datasetFile)
 
@@ -787,46 +787,46 @@ workflow {
         
         krakenM_ch = krakenMax(hbCollect_ch) // Kraken species ID
         
-        kaiju_ch = kaiju(hbCollect_ch)
+        kaiju_ch = kaiju(hbCollect_ch) // Kaiju species ID
         kaijuRep_list = kaiju_ch.map{it -> it[1]}.collect()
         kaiju_grouped_ch = grouping_intodir_kaiju(kaijuRep_list)
         kaiju_summary_ch = kaiju_summary(kaiju_grouped_ch)
       
-        mash_ch = mash(hbCollect_ch)
+        mash_ch = mash(hbCollect_ch) // Mash Species ID
         mashRes_list = mash_ch.map{it -> it[1]}.collect()
         mash_grouped_ch = grouping_intodir_mash(mashRes_list)
         mash_summary_ch = mash_summary(mash_grouped_ch)
         
-        prokkaAnt_ch = prokka(hbCollect_ch)
+        prokkaAnt_ch = prokka(hbCollect_ch) // Prokka annotation
         prokkaRes_list = prokkaAnt_ch.collect()
         prokka_grouped_ch = grouping_intodir_prokka(prokkaRes_list)
         prokka_summary_ch = prokka_summary(prokka_grouped_ch)
 
-        bakta_ch = bakta(hbCollect_ch)
+        bakta_ch = bakta(hbCollect_ch) // Bakta annotation
         baktaRes_list = bakta_ch.collect()
         bakta_grouped_ch = grouping_intodir_bakta(baktaRes_list)
         bakta_summary_ch = bakta_summary(bakta_grouped_ch)
 
-      	amrfinderplus_ch = amrfinderplus(hbCollect_ch)
+      	amrfinderplus_ch = amrfinderplus(hbCollect_ch) // Antimicobial detection
         
-        krakenRep_list = krakenM_ch[0].map{it -> it[1]}.collect()
+        krakenRep_list = krakenM_ch[0].map{it -> it[1]}.collect() // Kaken report grouping
         kraken_grouped_ch = grouping_intodir_kraken(krakenRep_list)
         kraken_summary_ch = kraken_summary(kraken_grouped_ch)
         
-        meta_gener_ch = metaDt_gener(kraken_summary_ch[1], meta_ch)
+        meta_gener_ch = metaDt_gener(kraken_summary_ch[1], meta_ch) // yaml file metdadat creation
         metDir_list = meta_gener_ch.collect()
         metdir_grouped_ch = grouping_metaDtDir(metDir_list)
         
-        asbly_list = hbCollect_ch.map{it -> it[1]}.collect()
+        asbly_list = hbCollect_ch.map{it -> it[1]}.collect() // Assembly grouping
         asbly_grouped_ch = grouping_intodir_asbl(asbly_list)
         
-        groupingfor_pgap_ch = groupingfor_pgap(asbly_grouped_ch, metdir_grouped_ch)
-        pgap_antn_ch = pgap_antn(groupingfor_pgap_ch)
+        groupingfor_pgap_ch = groupingfor_pgap(asbly_grouped_ch, metdir_grouped_ch) // Asb and yaml in same dir
+        pgap_antn_ch = pgap_antn(groupingfor_pgap_ch) // pgap annotation
         pgap_resList = pgap_antn_ch.collect()
         pgap_resgrouped_ch = grouping_intodir_pgap(pgap_resList)
         pgap_summary_ch = pgap_summary(pgap_resgrouped_ch)
         
-        ani_ch = ani(groupingfor_pgap_ch)
+        ani_ch = ani(groupingfor_pgap_ch)// genomic comparison
         aniRes_list = ani_ch.collect()
         ani_grouped_ch = grouping_intodir_ani(aniRes_list)
         ani_summary_ch = ani_summary(ani_grouped_ch)

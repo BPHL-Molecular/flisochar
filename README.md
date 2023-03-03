@@ -27,9 +27,9 @@ The current worflow comprises:
 6. Average nucleotide identity (ANI): pyANI(pgap)
 
 # Running Flisochar
-Software requirements: You need to have Python, Nextlow, Singularity (apptainer) in your system.
+## Software requirements: You need to have Python, Nextlow, Singularity (apptainer) in your system.
 
-Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. While installing, a great idea is creating the environment path variable under your group and username (export PGAP_INPUT_DIR =/*/YourGroup/UserName/repos/ncbi/pgap), simply to save everything on your HPC cluster.
+Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. While installing, a great idea is creating the environment path variable under your group and username (export PGAP_INPUT_DIR =/*/YourGroup/UserName/repos/ncbi/pgap), simply to save everything on your HPC cluster. Then write ./pgap.py --update -D singularity (at the end)
 
 ### Note: Before running flisochar, ensure that computing resources are available.
 
@@ -46,7 +46,7 @@ module load nextflow apptainer
 ## General Usage
 
 ```
-nextflow run flisochar.nf --lreads '*.fastq.gz' --sreads '*_R{1,2}.fastq.gz' --outdir << your output directory>>
+nextflow run flisochar.nf --lreads '*.fastq.gz' --sreads '*_{1,2}.fastq.gz' --outdir << your output directory>>
 
 ```
 The full usage may be accessed by executing the following command:
