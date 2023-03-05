@@ -46,7 +46,7 @@ module load nextflow apptainer
 ## General Usage
 
 ```
-nextflow run flisochar.nf --lreads 'Your_long-read/path/*.fastq.gz' --sreads 'Your_short-read/path/*_{1,2}.fastq.gz' --outdir << your output directory>>
+nextflow run flisochar.nf --lreads '*.fastq.gz' --sreads '*_{1,2}.fastq.gz' --outdir << your output directory>>
 
 ```
 The full usage may be accessed by executing the following command:

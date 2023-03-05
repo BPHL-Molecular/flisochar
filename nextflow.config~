@@ -120,8 +120,7 @@ singularity {
 manifest {
   homePage = 'https://github.com/BPHL-Molecular/flisochar'
   description = 'Florida Isolate Characterization Pipeline.'
-  mainScript = 'main.nf' // or mainScript = 'flisochar.nf'
- 
+  mainScript = 'main.nf'
 }
 
 mail {
