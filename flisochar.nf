@@ -90,7 +90,7 @@ Please specify --lreads and --sreads as appropriate.
 lreads_ch = Channel
         .fromPath(params.lreads)
         .ifEmpty {exit 1, "Cannot find any long reads matching: ${params.lreads}\nNB: Path needs to be enclosed in quotes!"}
-        .map { file -> tuple(file.baseName.strip('.fastq'), file) }
+        .map { file -> tuple(file.simpleName, file) } # file.simpleName used when file has multiple extension (sample.fastq.gz)
 threads = Channel.value( params.threads )
 
 sreads_ch = Channel
