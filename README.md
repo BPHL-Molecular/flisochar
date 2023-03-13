@@ -58,5 +58,6 @@ nextflow run flisochar.nf --help
 
 ### Example
 Run the pipeline on the test dataset in your working directory using the following command:
+
 nextflow run flisochar.nf --lreads 'flisochar_test_data/LRdata/*.fastq.gz' --sreads 'flisochar_test_data/SRdata/*_{1,2}.fastq.gz' --outdir flisochar_test_out 
 
