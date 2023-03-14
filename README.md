@@ -28,7 +28,7 @@ The current worflow comprises:
 
 # Running Flisochar
 ## Software Requirements 
-You need to have Python (with package Pandas installed), Nextlow, Singularity (apptainer) in your system.
+You need to have Python (version 3.6 or higher with the package Pandas installed), Nextlow, Singularity (apptainer) in your system.
 
 Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. While installing, a great idea is creating the environment path variable under your group and username (export PGAP_INPUT_DIR=/*/YourGroup/UserName/repos/ncbi/pgap), simply to save everything on your HPC cluster. Then execute ./pgap.py --update -D singularity ( on your terminal at the end)
 
