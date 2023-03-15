@@ -24,6 +24,7 @@ nextflow.enable.dsl = 2
 //rep_ch = Channel
 //        .fromPath(params.rep, checkIfExists: true)
 
+// tree as after mkdir
 // Processes
 process grouping_intodir{
     //publishDir "$params.outdir/",
@@ -37,7 +38,6 @@ process grouping_intodir{
     """
     echo "[make_dir]"
     mkdir -p grouping_dir
-    tree
     mv ${x} grouping_dir/
     echo "[user_dir]"
     ls grouping_dir
