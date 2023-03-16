@@ -25,7 +25,7 @@ parser.add_argument('--ppgroup_dir', type=str, help =' provide the directory pat
 args = parser.parse_args()
 
 #asbl_dir = args.asb_dir
-#threads = str(args.threads)
+#threads = str(args.threads)  {PGAP_INPUT_DIR}pgap_20* captures emage of any date
 pg_dir = args.ppgroup_dir
 # os.path.join(path, "User/Desktop", "file.txt")    
 #aslist=os.listdir(asbl_dir)
@@ -40,6 +40,6 @@ pgdirlist.sort()
 #ll =[l.split(".")[0] for l in aslist]
 #print(pgdirlist)
 for sample_id in pgdirlist:
-    subprocess.run('${PGAP_INPUT_DIR}./pgap.py -n --no-internet --ignore-all-errors --container-path ${PGAP_INPUT_DIR}pgap_2022-04-14.build6021.sif --taxcheck-only -o ' + sample_id+'_taxCheck '+ pg_dir +'/'+ sample_id+'/input_'+ sample_id + '.yaml --docker singularity', shell = True, check = True)
+    subprocess.run('${PGAP_INPUT_DIR}./pgap.py -n --no-internet --ignore-all-errors --container-path ${PGAP_INPUT_DIR}pgap_20* --taxcheck-only -o ' + sample_id+'_taxCheck '+ pg_dir +'/'+ sample_id+'/input_'+ sample_id + '.yaml --docker singularity', shell = True, check = True)
 
 
