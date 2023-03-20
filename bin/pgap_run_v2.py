@@ -30,7 +30,7 @@ pgdirlist.sort()
 #ll =[l.split(".")[0] for l in aslist]
 #print(pgdirlist)
 for sample_id in pgdirlist:
-    subprocess.run('${PGAP_INPUT_DIR}./pgap.py -n --no-internet --ignore-all-errors --container-path ${PGAP_INPUT_DIR}pgap_20* -o ' + sample_id+'_results '+ pg_dir +'/'+ sample_id+'/input_'+ sample_id + '.yaml --docker singularity', shell = True, check = True)
+    subprocess.run('${PGAP_INPUT_DIR}pgap.py -n --no-internet --ignore-all-errors --container-path ${PGAP_INPUT_DIR}pgap_20* -o ' + sample_id+'_results '+ pg_dir +'/'+ sample_id+'/input_'+ sample_id + '.yaml --docker singularity', shell = True, check = True)
 # ${PGAP_INPUT_DIR}pgap_20* captures image of any date
 """
 subprocess.run('${PGAP_INPUT_DIR}./pgap.py -n --no-internet --ignore-all-errors --container-path ${PGAP_INPUT_DIR}pgap_2022-04-14.build6021.sif -o ' + sample_id+'_results '+ p\
