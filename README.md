@@ -34,7 +34,18 @@ Flisochar requires Python (version 3.6 or higher with the package Pandas install
 
 ### Pgap
 
-Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. Before installing, we recommend to create a directory path for the installation under your group(mkdir /*/YourGroup/UserName/repos/ncbi/pgap) and cd to it. Set this environment variable <PGAP_INPUT_DIR> to the created path (export PGAP_INPUT_DIR=/*/YourGroup/UserName/repos/ncbi/pgap/), simply to save everything on your HPC cluster. Note the slash at the end of the previous path(../pgap/) is required, so that all pgap's files are found in that directory. Download the pgap.py file as directed. Change the file into executable mode (chmod +x pgap.py). Then execute ./pgap.py --update --taxcheck -D apptainer (on your terminal and pagap installation will be complete). 
+Currenly, the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. Before installing, we recommend to create a directory path for the installation under your group
+```
+mkdir /*/YourGroup/UserName/repos/ncbi/pgap
+```
+and cd to it. Set this environment variable <PGAP_INPUT_DIR> to the created path, 
+```
+export PGAP_INPUT_DIR=/*/YourGroup/UserName/repos/ncbi/pgap/
+```
+simply to save everything on your HPC cluster. Note the slash at the end of the previous path(../pgap/) is required, so that all pgap's files are found in that directory. Download the pgap.py file as directed. Change the file into executable mode (chmod +x pgap.py). Then execute the command below on your terminal, and pagap installation will be complete. 
+```
+./pgap.py --update --taxcheck -D apptainer
+``` 
 
 # Resource Requirements
  
