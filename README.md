@@ -26,23 +26,33 @@ The current worflow comprises:
 5. Antimicrobial resistance genes marker: AMRFinderPlus
 6. Average nucleotide identity (ANI): pyANI(pgap)
 
-# Running Flisochar
+# Installation
+At the moment, it is meant to clone this repository to your local directory.[Clone a directory](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository)
+
 ## Software Requirements 
-You need to have Python (version 3.6 or higher with the package Pandas installed), Nextlow, Singularity (apptainer) in your system.
+Flisochar requires Python (version 3.6 or higher with the package Pandas installed), Nextlow, Singularity (apptainer) available in your system.
 
-Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. While installing, a great idea is creating the environment path variable under your group and username (export PGAP_INPUT_DIR=/*/YourGroup/UserName/repos/ncbi/pgap/), simply to save everything on your HPC cluster. Note the slash at the end of the previous path is required(../pgap/), making sure all pgap's files are in the same directory. Then execute ./pgap.py --update -D singularity ( on your terminal at the end)
+### Pgap
 
-### Before running flisochar, ensure that required computing resources are available.
+Currenly the installation of [pgap](https://github.com/ncbi/pgap/wiki/Quick-Start) is also required. Before installing, we recommend to create a directory path for the installation under your group(mkdir /*/YourGroup/UserName/repos/ncbi/pgap) and cd to it. Set this environment variable <PGAP_INPUT_DIR> to the created path (export PGAP_INPUT_DIR=/*/YourGroup/UserName/repos/ncbi/pgap/), simply to save everything on your HPC cluster. Note the slash at the end of the previous path(../pgap/) is required, so that all pgap's files are found in that directory. Download the pgap.py file as directed. Change the file into executable mode (chmod +x pgap.py). Then execute ./pgap.py --update --taxcheck -D apptainer (on your terminal and pagap installation will be complete). 
 
-## Resource Requirements
-
-Cores: 28, Memory: 200gb, Time ~ 2:00 hrs for one hybrid (short-read, long-read) bacterial sample 
+# Resource Requirements
  
-Once the pipeline is available on your system (or on HiPerGator), as a first step, run the command below:
+Before running flisochar, ensure that required computing resources are available.
+Cores: 28, Memory: 200gb, Time ~ 2:00 hrs for one hybrid (short-read, long-read) bacterial sample 
+
+# Running Flisochar 
+
+Once the pipeline is available on your system (or on HiPerGator), get an interative run by following these first steps:
+
+```
+export PGAP_INPUT_DIR=/*/YourGroup/UserName/repos/ncbi/pgap/
+```
 
 ```
 module load nextflow apptainer
 ```
+The above two commands and resources may also be written in a job scheduler (sbatch or slurm script) instead.
 
 ## General Usage
 
