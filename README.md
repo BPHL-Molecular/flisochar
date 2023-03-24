@@ -54,7 +54,7 @@ Cores: 28, Memory: 200gb, Time ~ 2:00 hrs for one hybrid (short-read, long-read)
 
 # Running Flisochar 
 
-Once the pipeline is available on your system (or on HiPerGator), get an interative run by following these first steps:
+Once the pipeline is available on your system (or on HiPerGator), get an interactive run by following these first steps:
 
 ```
 export PGAP_INPUT_DIR=/*/YourGroup/UserName/repos/ncbi/pgap/
